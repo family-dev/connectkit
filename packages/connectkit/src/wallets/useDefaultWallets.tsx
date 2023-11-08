@@ -3,7 +3,7 @@ import { WalletProps } from './wallet';
 
 import { useConnect } from 'wagmi';
 
-function useDefaultWallets(): WalletProps[] | any {
+function useDefaultWallets(): WalletProps[] {
   const { connectors } = useConnect();
 
   let defaultWallets: string[] = [];

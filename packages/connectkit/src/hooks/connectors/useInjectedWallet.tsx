@@ -1,5 +1,6 @@
 import { useInjectedConnector } from '../useConnectors';
 import useDefaultWallets from '../../wallets/useDefaultWallets';
+import { WalletProps } from '../../wallets/wallet';
 import Logos from '../../assets/logos';
 
 export const useInjectedWallet = () => {
@@ -38,18 +39,19 @@ export const useInjectedWallet = () => {
   };
 
   const getWallet = () => {
-    const installedWallets = wallets.filter((wallet: any) => wallet.installed);
+    const installedWallets = wallets.filter((wallet) => wallet.installed);
     if (installedWallets.length > 0) {
       return installedWallets[0];
     } else {
-      return {
+      const wallet: WalletProps = {
         id: 'injected',
         name: getInjectedNames()?.[0] ?? 'Browser Wallet',
         shortName: getInjectedNames()?.[0]?.replace(' Wallet', '') ?? 'Browser',
         logos: {
           default: <Logos.Injected />,
         },
-      };
+      }
+      return wallet;
     }
   };
 
