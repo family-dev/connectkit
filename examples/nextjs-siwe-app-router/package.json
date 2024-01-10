@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-siwe",
+  "name": "nextjs-siwe-app-router",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,7 @@
     "react-dom": "^18.0.0",
     "siwe": "^2.1.4",
     "viem": "^1.1.0",
-    "wagmi": "^1.1.0"
+    "wagmi": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "18.7.18",

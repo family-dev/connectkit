@@ -1,5 +1,3 @@
-import { FunctionComponent, ComponentProps } from 'react';
-import { SIWEProvider } from 'connectkit';
 import type { IncomingMessage, ServerResponse } from 'http';
 import { getIronSession, IronSession, IronSessionOptions } from 'iron-session';
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
@@ -27,10 +25,6 @@ type NextServerSIWEConfig = {
   session?: Partial<IronSessionOptions>;
   options?: RouteHandlerOptions;
 };
-type NextClientSIWEConfig = {
-  apiRoutePrefix: string;
-  statement?: string;
-};
 
 type NextSIWESession<TSessionData extends Object = {}> = IronSession &
   TSessionData & {
@@ -39,29 +33,12 @@ type NextSIWESession<TSessionData extends Object = {}> = IronSession &
     chainId?: number;
   };
 
-type NextSIWEProviderProps = Omit<
-  ComponentProps<typeof SIWEProvider>,
-  | 'getNonce'
-  | 'createMessage'
-  | 'verifyMessage'
-  | 'getSession'
-  | 'signOut'
-  | 'data'
-  | 'signIn'
-  | 'status'
-  | 'resetStatus'
->;
-
 type ConfigureServerSIWEResult<TSessionData extends Object = {}> = {
   apiRouteHandler: NextApiHandler;
   getSession: (
     req: IncomingMessage,
     res: ServerResponse
   ) => Promise<NextSIWESession<TSessionData>>;
-};
-
-type ConfigureClientSIWEResult<TSessionData extends Object = {}> = {
-  Provider: FunctionComponent<NextSIWEProviderProps>;
 };
 
 const getSession = async <TSessionData extends Object = {}>(
@@ -234,59 +211,5 @@ export const configureServerSideSIWE = <TSessionData extends Object = {}>({
     apiRouteHandler,
     getSession: async (req: IncomingMessage, res: ServerResponse) =>
       await getSession<TSessionData>(req, res, sessionConfig),
-  };
-};
-
-export const configureClientSIWE = <TSessionData extends Object = {}>({
-  apiRoutePrefix,
-  statement = 'Sign In With Ethereum.',
-}: NextClientSIWEConfig): ConfigureClientSIWEResult<TSessionData> => {
-  const NextSIWEProvider = (props: NextSIWEProviderProps) => {
-    return (
-      <SIWEProvider
-        getNonce={async () => {
-          const res = await fetch(`${apiRoutePrefix}/nonce`);
-          if (!res.ok) {
-            throw new Error('Failed to fetch SIWE nonce');
-          }
-          const nonce = await res.text();
-          return nonce;
-        }}
-        createMessage={({ nonce, address, chainId }) =>
-          new SiweMessage({
-            version: '1',
-            domain: window.location.host,
-            uri: window.location.origin,
-            address,
-            chainId,
-            nonce,
-            statement,
-          }).prepareMessage()
-        }
-        verifyMessage={({ message, signature }) =>
-          fetch(`${apiRoutePrefix}/verify`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message, signature }),
-          }).then((res) => res.ok)
-        }
-        getSession={async () => {
-          const res = await fetch(`${apiRoutePrefix}/session`);
-          if (!res.ok) {
-            throw new Error('Failed to fetch SIWE session');
-          }
-          const { address, chainId } = await res.json();
-          return address && chainId ? { address, chainId } : null;
-        }}
-        signOut={() => fetch(`${apiRoutePrefix}/logout`).then((res) => res.ok)}
-        {...props}
-      />
-    );
-  };
-
-  return {
-    Provider: NextSIWEProvider,
   };
 };

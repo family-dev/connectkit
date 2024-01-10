@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "connectkit": "workspace:packages/connectkit",
-    "next": "12.3.0",
+    "next": "13.4.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "viem": "^1.0.0",
