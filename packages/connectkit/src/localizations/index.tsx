@@ -7,11 +7,11 @@ export type Languages =
   | 'fr-FR'
   | 'ja-JP'
   | 'pt-BR'
-  | 'zh-CN'
   | 'ca-AD'
   | 'ru-RU'
   | 'zh-CN'
   | 'tr-TR'
+  | 'nl-NL'
   | 'vi-VN';
 
 import { default as arAE } from './locales/ar-AE';
@@ -27,6 +27,7 @@ import { default as zhCN } from './locales/zh-CN';
 import { default as caAD } from './locales/ca-AD';
 import { default as trTR } from './locales/tr-TR';
 import { default as viVN } from './locales/vi-VN';
+import { default as nlNL } from './locales/nl-NL';
 
 // TODO: tree-shaking
 export const getLocale = (lang: Languages) => {
@@ -55,6 +56,8 @@ export const getLocale = (lang: Languages) => {
       return trTR;
     case 'vi-VN':
       return viVN;
+    case 'nl-NL':
+      return nlNL;
     default:
       return enUS;
   }

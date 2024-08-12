@@ -57,6 +57,7 @@ const languages: SelectProps[] = [
   { label: 'Arabic', value: 'ar-AE' },
   { label: 'Catalan', value: 'ca-AD' },
   { label: 'Chinese', value: 'zh-CN' },
+  { label: 'Dutch', value: 'nl-NL' },
   { label: 'Estonian', value: 'ee-EE' },
   { label: 'French', value: 'fr-FR' },
   { label: 'Japanese', value: 'ja-JP' },
