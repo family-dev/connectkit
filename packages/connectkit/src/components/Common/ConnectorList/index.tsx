@@ -17,6 +17,7 @@ import Alert from '../Alert';
 import { WalletProps, useWallets } from '../../../wallets/useWallets';
 import {
   detectBrowser,
+  isAndroid,
   isCoinbaseWalletConnector,
   isWalletConnectConnector,
 } from '../../../utils';
@@ -34,15 +35,15 @@ const ConnectorList = () => {
     context.options?.hideRecentBadge || lastConnectorId === 'walletConnect' // do not hoist walletconnect to top of list
       ? wallets
       : [
-          // move last used wallet to top of list
-          // using .filter and spread to avoid mutating original array order with .sort
-          ...wallets.filter(
-            (wallet) => lastConnectorId === wallet.connector.id
-          ),
-          ...wallets.filter(
-            (wallet) => lastConnectorId !== wallet.connector.id
-          ),
-        ];
+        // move last used wallet to top of list
+        // using .filter and spread to avoid mutating original array order with .sort
+        ...wallets.filter(
+          (wallet) => lastConnectorId === wallet.connector.id
+        ),
+        ...wallets.filter(
+          (wallet) => lastConnectorId !== wallet.connector.id
+        ),
+      ];
 
   return (
     <ScrollArea mobileDirection={'horizontal'}>
@@ -97,7 +98,7 @@ const ConnectorItem = ({
 
   let deeplink =
     (!wallet.isInstalled && isMobile) ||
-    (wallet.shouldDeeplinkDesktop && !isMobile)
+      (wallet.shouldDeeplinkDesktop && !isMobile)
       ? wallet.getWalletConnectDeeplink?.(uri ?? '')
       : undefined;
 
@@ -114,21 +115,22 @@ const ConnectorItem = ({
       type="button"
       as={deeplink ? 'a' : undefined}
       href={deeplink ? deeplink : undefined}
+      target={deeplink && isAndroid() ? '_blank' : undefined}
       disabled={context.route !== routes.CONNECTORS}
       onClick={
         deeplink
           ? undefined
           : () => {
-              if (redirectToMoreWallets) {
-                context.setRoute(routes.MOBILECONNECTORS);
-              } else {
-                if (shouldConnectImmediately) {
-                  connect({ connector: wallet?.connector });
-                }
-                context.setRoute(routes.CONNECT);
-                context.setConnector({ id: wallet.id });
+            if (redirectToMoreWallets) {
+              context.setRoute(routes.MOBILECONNECTORS);
+            } else {
+              if (shouldConnectImmediately) {
+                connect({ connector: wallet?.connector });
               }
+              context.setRoute(routes.CONNECT);
+              context.setConnector({ id: wallet.id });
             }
+          }
       }
     >
       <ConnectorIcon
