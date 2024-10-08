@@ -54,6 +54,16 @@ export const chainConfigs: Chain[] = [
     logo: <Logos.Ethereum testnet />,
   },
   {
+    id: 30,
+    name: 'Rootstock',
+    logo: <Logos.Rootstock />,
+  }, 
+  {
+    id: 31,
+    name: 'Rootstock Testnet',
+    logo: <Logos.Rootstock testnet />,
+  },  
+  {
     id: 42,
     name: 'Kovan',
     logo: <Logos.Ethereum testnet />,

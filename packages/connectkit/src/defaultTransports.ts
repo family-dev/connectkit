@@ -8,7 +8,7 @@
 
 import { fallback, http, webSocket } from 'wagmi';
 import { type CreateConfigParameters } from '@wagmi/core';
-import { type Chain, mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { type Chain, mainnet, polygon, optimism, arbitrum, rootstock } from 'wagmi/chains';
 import { type HttpTransport, type WebSocketTransport } from 'viem';
 
 import { chainConfigs } from './constants/chainConfigs';
@@ -48,7 +48,7 @@ type GetDefaultTransportsProps = {
 };
 
 export const getDefaultTransports = ({
-  chains = [mainnet, polygon, optimism, arbitrum],
+  chains = [mainnet, polygon, optimism, arbitrum, rootstock],
   alchemyId,
   infuraId,
 }: GetDefaultTransportsProps): CreateConfigParameters['transports'] => {
