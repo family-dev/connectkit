@@ -1,0 +1,116 @@
+const itIT = {
+  connectWallet: 'Connetti un Wallet',
+  disconnect: 'Disconnetti',
+  connected: 'Connesso',
+  wrongNetwork: 'Rete errata',
+  switchNetworks: 'Cambia Rete',
+  chainNetwork: 'Rete {{ CHAIN }}',
+  copyToClipboard: 'Copia negli Appunti',
+  copyCode: 'Copia il codice',
+  moreInformation: 'Più Informazioni',
+  back: 'Indietro',
+  close: 'Chiudi',
+  or: 'o',
+  more: 'Di più',
+  tryAgain: 'Riprova',
+  tryAgainQuestion: 'Riprovare?',
+  dontHaveTheApp: "Non hai l'app?",
+  scanTheQRCode: 'Inquadra il QR code',
+  useWalletConnectModal: 'Usa WalletConnect Modal',
+  useModal: 'Usa Modal',
+  installTheExtension: 'Installa l'Estensione',
+  getWalletName: 'Ottieni {{ CONNECTORNAME }}',
+  otherWallets: 'Altri Wallet',
+  learnMore: 'Scopri di Più',
+  getWallet: 'Ottieni un Wallet',
+  approveInWallet: 'Approva nel Wallet',
+  confirmInWallet: 'Conferma nel Wallet',
+  awaitingConfirmation: 'In Attesa di Conferma',
+  signIn: 'Accedi',
+  signOut: Disconnettiti',
+  signedIn: 'Accesso effetuato',
+  signedOut: 'Disconnessione effettuata',
+  walletNotConnected: 'Wallet Non Connesso',
+
+  warnings_walletSwitchingUnsupported: `Il tuo wallet non supporta il cambio di rete da questa app.`,
+  warnings_walletSwitchingUnsupportedResolve: `Prova a cambiare rete dal tuo wallet.`,
+  warnings_chainUnsupported: `L'app non supporta la rete connessa attualmente.`,
+  warnings_chainUnsupportedResolve: `Cambia o disconnetti per continuare.`,
+
+  onboardingScreen_heading: `Ottieni un Wallet`,
+  onboardingScreen_h1: `Inizia a Esplorare il Web3`,
+  onboardingScreen_p: `Il tuo wallet è il portale di accesso a tutto quello che riguarda Ethereum, la magica tecnologia che ti permette di esplorare il web3.`,
+  onboardingScreen_ctaText: `Seleziona il tuo primo Wallet`,
+  onboardingScreen_ctaUrl: `https://ethereum.org/it/wallets/find-wallet/`,
+
+  aboutScreen_heading: `Riguardo ai Wallet`,
+  aboutScreen_a_h1: `Per i tuoi asset digitali`,
+  aboutScreen_a_p: `I wallet ti permettono di inviare, ricevere, salvare, e interagire con gli asset digitali come  gli NFT e altro token di Ethereum.`,
+  aboutScreen_b_h1: `Un metodo migliore per accedere`,
+  aboutScreen_b_p: `Con le moderne app, il tuo wallet può essere usato come via più veloce per accedere, senza doverti ricordare una password.`,
+  aboutScreen_c_h1: `Esplora il mondo del web3`,
+  aboutScreen_c_p: `Il tuo wallet è uno strumento essenziale che ti permette di esplorare e prendere parte al veloce evoluzione del web3.`,
+  aboutScreen_ctaText: `Scopri di più`,
+  aboutScreen_ctaUrl: `https://ethereum.org/it/wallets/`,
+
+  connectorsScreen_heading: `Connetti Wallet`,
+  connectorsScreen_newcomer: `Non ho un wallet`,
+  connectorsScreen_h1: `Che cos'è un wallet?`,
+  connectorsScreen_p: `I wallet ti permettono di inviare, ricevere, salvare, e interagire con gli asset digitali come  gli NFT e altro token di Ethereum.`,
+
+  mobileConnectorsScreen_heading: `Scegli un Wallet`,
+
+  scanScreen_heading: `Scansiona con Phone`,
+  scanScreen_heading_withConnector: `Scansiona con {{ CONNECTORNAME }}`,
+  scanScreen_tooltip_walletConnect: `Apri un wallet compatibile con WalletConnect [WALLETCONNECTLOGO] per continuare`,
+  scanScreen_tooltip_default: `Apri {{ CONNECTORNAME }} sul tuo telefono per scansionarlo`,
+
+  downloadAppScreen_heading: `Ottieni {{ CONNECTORNAME }}`,
+  downloadAppScreen_iosAndroid: `Inquadra con il telefono per scaricarla su iOS o Android.`,
+  downloadAppScreen_ios: `Inquadra con il telefono per scaricarla su iOS.`,
+  downloadAppScreen_android: `Inquadra con telefono per scaricarla su Android.`,
+
+  injectionScreen_unavailable_h1: `Browser non supportato`,
+  injectionScreen_unavailable_p: `Per connettere il tuo {{ CONNECTORSHORTNAME }} wallet \ninstalla l'estensione {{ SUGGESTEDEXTENSIONBROWSER }}.`,
+
+  injectionScreen_install_h1: `Installa {{ CONNECTORNAME }}`,
+  injectionScreen_install_p: `Per connettere il tuo {{ CONNECTORSHORTNAME }} wallet \ninstalla l'estensione.`,
+
+  injectionScreen_connecting_h1: `Richiesta di connessione`,
+  injectionScreen_connecting_p: `Apri l'estione browser {{ CONNECTORSHORTNAME }} per connetterti al tuo wallet.`,
+  injectionScreen_connecting_injected_h1: `Richiesta di connessione`,
+  injectionScreen_connecting_injected_p: `Accetta la richiesta sul tuo wallet per connetterti all'app.`,
+
+  injectionScreen_connected_h1: `Sei già connesso`,
+  injectionScreen_connected_p: `Ora puoi chiudere il popup`,
+
+  injectionScreen_rejected_h1: `Richiesta annullata`,
+  injectionScreen_rejected_p: `Hai annullato la richiesta.\nClicca qua sopra per ritentare.`,
+
+  injectionScreen_failed_h1: `Connessione fallita`,
+  injectionScreen_failed_p: `Mi spiace, qualcosa è andato storto.\nProva a connetterti di nuovo.`,
+
+  injectionScreen_notconnected_h1: `Accedi a {{ CONNECTORNAME }}`,
+  injectionScreen_notconnected_p: `Per continuare, accedi ala tua estensione {{ CONNECTORNAME }}.`,
+
+  profileScreen_heading: 'Connesso',
+
+  switchNetworkScreen_heading: 'Cambio di rete',
+
+  signInWithEthereumScreen_tooltip:
+    'Non hai effettuato l'accesso a questa applicazione.\n**Accedi con Ethereum** per continuare.',
+
+  signInWithEthereumScreen_signedOut_heading: 'Accedi con Ethereum',
+  signInWithEthereumScreen_signedOut_h1:
+    'Questa app desidera che tu sia il proprietario di questo wallet.',
+  signInWithEthereumScreen_signedOut_p: `Per favore firma il messaggio di richiesta nel tuo wallet per continuare.`,
+  signInWithEthereumScreen_signedOut_button: 'Accedi',
+
+  signInWithEthereumScreen_signedIn_heading: 'Accesso Effettuato con Ethereum',
+  signInWithEthereumScreen_signedIn_h1:
+    'Hai verificato correttamente che sei il proprietario di questo wallet.',
+  signInWithEthereumScreen_signedIn_p: `Disconnettendoti, la prossima volta sarà necessaria di nuovo l'autenticazione.`,
+  signInWithEthereumScreen_signedIn_button: 'Disconettiti',
+};
+
+export default itIT;
