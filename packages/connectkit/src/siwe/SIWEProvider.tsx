@@ -84,7 +84,7 @@ export const SIWEProvider = ({
     },
   });
 
-  const { address, chain } = useAccount();
+  const { address, chainId } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
   const onError = (error: any) => {
@@ -106,7 +106,6 @@ export const SIWEProvider = ({
         throw new Error('SIWE not configured');
       }
 
-      const chainId = chain?.id;
       if (!address) throw new Error('No address found');
       if (!chainId) throw new Error('No chainId found');
 
@@ -149,7 +148,7 @@ export const SIWEProvider = ({
     // Skip if we're still fetching session state from backend
     if (!sessionData || !sessionData.address || !sessionData.chainId) return;
     // Skip if wallet isn't connected (i.e. initial page load)
-    if (!connectedAddress || !chain) return;
+    if (!connectedAddress || !chainId) return;
 
     // If SIWE session no longer matches connected account, sign out
     if (
@@ -163,11 +162,11 @@ export const SIWEProvider = ({
     // so we're being extra cautious about keeping the SIWE session and the
     // connected account/network in sync. But this can be disabled when
     // configuring the SIWEProvider.
-    else if (signOutOnNetworkChange && sessionData.chainId !== chain.id) {
+    else if (signOutOnNetworkChange && sessionData.chainId !== chainId) {
       console.warn('Wallet network changed, signing out of SIWE session');
       signOutAndRefetch();
     }
-  }, [sessionData, connectedAddress, chain]);
+  }, [sessionData, connectedAddress, chainId]);
 
   return (
     <SIWEContext.Provider
