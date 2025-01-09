@@ -16,12 +16,14 @@ type DefaultConnectorsProps = {
   };
   walletConnectProjectId?: string;
   coinbaseWalletPreference?: CoinbaseWalletParameters<'4'>['preference'];
+  safeWalletAllowedDomains?: RegExp[];
 };
 
 const defaultConnectors = ({
   app,
   walletConnectProjectId,
   coinbaseWalletPreference,
+  safeWalletAllowedDomains = [/gnosis-safe.io$/, /app.safe.global$/],
 }: DefaultConnectorsProps): CreateConnectorFn[] => {
   const hasAllAppData = app.name && app.icon && app.description && app.url;
   const shouldUseSafeConnector =
@@ -33,7 +35,7 @@ const defaultConnectors = ({
   if (shouldUseSafeConnector) {
     connectors.push(
       safe({
-        allowedDomains: [/gnosis-safe.io$/, /app.safe.global$/],
+        allowedDomains: safeWalletAllowedDomains,
       })
     );
   }

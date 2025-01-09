@@ -21,6 +21,7 @@ type DefaultConfigProps = {
   walletConnectProjectId: string;
   // Coinbase Wallet preference
   coinbaseWalletPreference?: CoinbaseWalletParameters<'4'>['preference'];
+  safeWalletAllowedDomains?: RegExp[];
 } & Partial<CreateConfigParameters>;
 
 const defaultConfig = ({
@@ -30,6 +31,7 @@ const defaultConfig = ({
   appUrl,
   walletConnectProjectId,
   coinbaseWalletPreference,
+  safeWalletAllowedDomains,
   chains = [mainnet, polygon, optimism, arbitrum],
   client,
   ...props
@@ -53,6 +55,7 @@ const defaultConfig = ({
       },
       walletConnectProjectId,
       coinbaseWalletPreference,
+      safeWalletAllowedDomains
     });
 
   const config: CreateConfigParameters<any, any> = {
