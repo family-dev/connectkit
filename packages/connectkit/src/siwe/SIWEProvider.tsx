@@ -13,8 +13,6 @@ import {
 
 type Props = SIWEConfig & {
   children: ReactNode;
-  onSignIn?: (data?: SIWESession) => void;
-  onSignOut?: () => void;
 };
 
 export const SIWE_NONCE_QUERY_KEY = 'ckSiweNonce';
@@ -28,8 +26,8 @@ export const SIWEProvider = ({
   signOutOnDisconnect = true,
   signOutOnAccountChange = true,
   signOutOnNetworkChange = true,
-  onSignIn,
-  onSignOut,
+  onSignIn = () => {},
+  onSignOut = () => {},
   ...siweConfig
 }: Props) => {
   const [status, setStatus] = useState<StatusState>(StatusState.READY);
@@ -178,6 +176,8 @@ export const SIWEProvider = ({
         signOutOnDisconnect,
         signOutOnAccountChange,
         signOutOnNetworkChange,
+        onSignIn,
+        onSignOut,
         ...siweConfig,
         nonce,
         session,
